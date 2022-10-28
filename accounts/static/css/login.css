@@ -7,13 +7,12 @@
 section { 
     display: flex;
     flex-direction: row;
-    border: 1px solid red;
     background-image: linear-gradient(
-        to right, 
+        to top right, 
         rgb(255, 255, 255) 0%,
-        rgb(255, 255, 255) 42%,
-        rgb(22, 90, 22) 42%,
-        rgb(22, 24, 90) 100%
+        hwb(0 100% 0%) 5%,
+        rgb(251, 251, 251) 20%,
+        rgb(255, 255, 255) 40%
     );
     height: 100vh;
 }
@@ -28,6 +27,19 @@ section {
 
 .picture { 
     width: 58%;
+    background: linear-gradient(rgba(37, 237, 255, 0.3), rgba(255, 0, 0, 0.3)), url(./wp4316542.webp);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+}
+
+/* over lay */
+.picture:before { 
+    background-image: linear-gradient(255deg,#e91e63,#03a9f4);
+    mix-blend-mode: screen;
+    z-index: 1;
 }
 
 h1 { 
