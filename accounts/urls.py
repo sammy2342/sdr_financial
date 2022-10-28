@@ -6,7 +6,7 @@ from banking import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls'))
-    path('', include('main.urls'))
+    path('', include('main.urls')),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.register, name='register'),
