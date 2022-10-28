@@ -85,8 +85,8 @@ h5 {
     pointer-events: none;
     font-size: 1em;
     color: rgba(156, 156, 156, 0.95);
-    text-transform: uppercase;
-    transition: 0.9s;
+    /* text-transform: uppercase; */
+    transition: 1s;
 }
 
 .form-group input:valid ~ span, 
@@ -99,6 +99,7 @@ h5 {
     border-left: 2px solid #acacac;
     border-right: 2px solid #afafaf;
     letter-spacing: 0.2em;
+
 }
 
 button { 
