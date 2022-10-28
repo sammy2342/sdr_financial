@@ -47,6 +47,7 @@ h1 {
     font-weight: 420;
     font-size: 34px;
     margin-bottom: 15px;
+    margin-right: 170px;
 }
 
 h5 { 
@@ -61,7 +62,9 @@ h5 {
 .form-group { 
     position: relative;
     width: 350px;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
+    margin-right: 55px;
+    margin-top: 13px;
 }
 
 .form-group input { 
@@ -69,7 +72,7 @@ h5 {
     padding: 10px;
     border: 1px solid rgba(167, 167, 167, 0.95);
     background-color: rgb(255, 255, 255);
-    border-radius: 5px;
+    border-radius: 20px;
     outline: none;
     color: black;
     font-size: 1em;
@@ -96,4 +99,16 @@ h5 {
     border-left: 2px solid #acacac;
     border-right: 2px solid #afafaf;
     letter-spacing: 0.2em;
+}
+
+button { 
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    padding: 10px;
+    width: 250px;
+    background-color: rgb(240, 50, 130);
+    outline: none;
+    border: 1px solid rgb(213, 41, 113);
+    border-radius: 20px;
 }
