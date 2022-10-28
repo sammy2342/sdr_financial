@@ -3,4 +3,4 @@ from django.contrib.auth import login, authenticate
 
 
 def home(request):
-    return render(request, "base.html", {})
+    return render(request, "home.html", {})
