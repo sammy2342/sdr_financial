@@ -1,3 +1,51 @@
+from email.policy import default
 from django.db import models
+from django.urls import reverse
+from django.contrib.auth.models import User
+from datetime import date
 
 # Create your models here.
+ACCOUNT_TYPES = (
+  ('C', 'Checkings'),
+  ('S', 'Savings'),
+)
+TRANSACTION_TYPES = (
+  ('W', 'Withdraw'),
+  ('D', 'Deposit'),
+  ('P','Purchase')
+)
+
+
+class Account(models.Model):
+    number = models.CharField(max_length=100)
+    balance = models.IntegerField()
+    type = models.CharField(
+        max_length=1,
+        choices=ACCOUNT_TYPES,
+        default=ACCOUNT_TYPES[0][0]
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.number} ({self.user.username})'
+
+
+class Transaction(models.Model):
+    date = models.DateField('Transaction Date')
+    description = models.TextField(max_length=12)
+    type= models.CharField(
+        max_length=1,
+        choices= TRANSACTION_TYPES,
+        default=TRANSACTION_TYPES[0][0]
+    )
+
+    account = models.ForeignKey(
+        Account,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return f'{self.description  } on {self.date}'
+
+    class Meta:
+        ordering = ['-date']
