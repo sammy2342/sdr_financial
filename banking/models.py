@@ -6,13 +6,13 @@ from datetime import date
 
 # Create your models here.
 ACCOUNT_TYPES = (
-  ('C', 'Checkings'),
-  ('S', 'Savings'),
+    ('C', 'Checkings'),
+    ('S', 'Savings'),
 )
 TRANSACTION_TYPES = (
-  ('W', 'Withdraw'),
-  ('D', 'Deposit'),
-  ('P','Purchase')
+    ('W', 'Withdraw'),
+    ('D', 'Deposit'),
+    ('P', 'Purchase')
 )
 
 
@@ -32,10 +32,12 @@ class Account(models.Model):
 
 class Transaction(models.Model):
     date = models.DateField('Transaction Date')
+    amount = models.IntegerField()
+    remaining_balance = models.IntegerField()
     description = models.TextField(max_length=12)
-    type= models.CharField(
+    type = models.CharField(
         max_length=1,
-        choices= TRANSACTION_TYPES,
+        choices=TRANSACTION_TYPES,
         default=TRANSACTION_TYPES[0][0]
     )
 
