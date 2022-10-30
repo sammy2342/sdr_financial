@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 section { 
     display: flex;
     flex-direction: row;
@@ -112,6 +113,11 @@ h5 {
     outline: none;
     border: 1px solid rgb(213, 41, 113);
     border-radius: 20px;
+}
+
+.mobile-class {
+    position: absolute;
+    visibility: hidden;
 }
 
 @media only screen and (max-width: 960px) { 
