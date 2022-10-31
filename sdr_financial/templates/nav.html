@@ -1,32 +1,33 @@
 <nav>
-  <li>
-    <div class="logo">RIDANSO</div>
-  </li>
-  <ul>
-    {% if user.is_authenticated %}
-    <li><a href={% url 'logout' %}>Logout</a></li>
-    {% else %}
-    <li><a href={% url 'login' %}>Login</a></li>
-    {% endif %}
-  </ul>
-  <button class="hamburger">
-    <div class="bar"></div>
-  </button>
+    <li><div class="logo">RIDANSO</div></li>
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="">Transactions</a></li>
+      <li><a href="">Sign up</a></li>
+        {% if request.user.is_authenticated%}
+          <li><a href={% url 'logout' %}>Logout</a></li>
+        {% else %}
+          <li><a href={% url 'login' %}>Login</a></li>
+        {% endif %}
+    </ul>
+    <button class="hamburger">
+      <div class="bar"></div>
+    </button>
 
 </nav>
 <nav class="mobile-class">
-  <a href="">first</a>
-  <a href="">second</a>
-  <a href="">third</a>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="">Transactions</a>
+    <a href="">Sign up</a>
 </nav>
 
 <script>
   const hamEl = document.querySelector('.hamburger')
   const mobilEl = document.querySelector('.mobile-class')
 
-  hamEl.addEventListener('click', function () {
-    console.log('hello with si work')
-    hamEl.classList.toggle('is-active')
-    mobilEl.classList.toggle('is-active')
+  hamEl.addEventListener('click', function() {
+      console.log('this works!!!')
+      hamEl.classList.toggle('is-active')
+      mobilEl.classList.toggle('is-active')
   })
 </script>
