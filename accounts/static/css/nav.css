@@ -158,4 +158,9 @@ ul > li a:hover {
         left: 0;
     }
 
+    ul > li > a { 
+        transition: all 0.8s ease 0s;
+        visibility: hidden;
+    }
+
 } 
