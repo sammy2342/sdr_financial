@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+import banking
 from . import views
 
 urlpatterns = [
@@ -22,5 +24,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('accounts.urls')),
     path('', views.home, name='home'),
+    path('', include('banking.urls'))
 
 ]
