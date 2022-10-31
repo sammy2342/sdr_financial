@@ -44,7 +44,6 @@ li {
     font-weight: 100;
     /* margin-right: auto; */
     z-index: 3;
-
 }
 
 a { 
@@ -165,6 +164,11 @@ ul > li a:hover {
     ul > li > a { 
         transition: all 0.8s ease 0s;
         visibility: hidden;
+        position: absolute;
     }
-
+    
+    .logo {
+        margin-left: 250px;
+        position: absolute;
+    }
 } 
