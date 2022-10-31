@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+<h1>Dashboard</h1>
+{% comment %} Create Bank Account Form{% endcomment %}
+<div>
+    <form action={% url 'new_bank_account' %} method="post">
+        {% csrf_token %}
+        <div>
+            <input type="number" name="balance" id="">
+            <p><small>Minimum $500 required to open accunt</small></p>
+        </div>
+        <div>
+            <select required name='type'>
+                <option disabled selected value>Choose account type</option>
+                <option value='C'>Checkings</option>
+                <option value='S'>Savings</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Create Account</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
