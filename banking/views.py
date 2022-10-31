@@ -10,4 +10,4 @@ def create_account(request):
 @login_required
 
 def dashboard(request):
-    return render('dashboard.html')
+    return render(request,'dashboard.html')
