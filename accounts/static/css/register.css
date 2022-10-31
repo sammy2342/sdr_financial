@@ -47,6 +47,7 @@
     margin-left: 40px;
 }
 
+
 .register-button { 
     background-color: black;
     color: white;
@@ -76,4 +77,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+label {
+    margin-left: 40px;
+    color: rgba(0, 0, 0, 0.6);
 }
