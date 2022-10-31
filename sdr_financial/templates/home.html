@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock title %}
 {% block content %}
+
 <body class="home">
     <h1 class="home-title">RIDANSO BANK</h1>
-    <h5 class="home-text">Ridanso Bank is a leading private sector bank in America <br> where user transactions can be safely checked.</h5>
+    <h5 class="home-text">Ridanso Bank is a leading private sector bank in America <br> where user transactions can be
+        safely checked.</h5>
     <span class="log-in-span">
         <button class="log-in">
-            <a href="" class="log-in-tag">LOG IN TO ACCOUNT</a>
+            <a href={% url 'login' %} class="log-in-tag">LOG IN TO ACCOUNT</a>
         </button>
     </span>
-    
 </body>
 {% endblock content %}
