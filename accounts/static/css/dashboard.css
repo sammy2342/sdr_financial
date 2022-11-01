@@ -24,10 +24,6 @@
     padding-bottom: 15px;
 }
 
-.account-div {
-    /* border: 1px solid red; */
-}
-
 .card-container {
     display: flex;
     flex-direction: row;
