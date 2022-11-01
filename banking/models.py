@@ -2,7 +2,7 @@ from email.policy import default
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from datetime import date
+from datetime import datetime
 
 # Create your models here.
 ACCOUNT_TYPES = (
@@ -25,8 +25,8 @@ class Account(models.Model):
         default=ACCOUNT_TYPES[0][0]
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(default=datetime.now)
+    updated_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return f'{self.number} ({self.user.username})'
@@ -47,8 +47,8 @@ class Transaction(models.Model):
         Account,
         on_delete=models.CASCADE
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(default=datetime.now)
+    updated_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return f'{self.description  } on {self.date}'
