@@ -1,14 +1,21 @@
 {% extends "base.html" %} {% block title %}Register{% endblock title %}
+<<<<<<< HEAD
 <section>
+=======
+{% block content %}
+
+<section class="register-section">
+>>>>>>> main
   <div class="container-1">
     <div class="row">
       <div class="col-md-12 col-centered">
-        <h1 class="mt-5 mb-3">Register</h1>
+        <h1 class="mt-5 mb-3 title-register">Register</h1>
+        <h5>please sign up</h5>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 offset-md-3 mt-3">
-        <form method="post" action="{% url 'register' %}">
+    <div class="row form-register-0">
+      <div class="col-md-6 offset-md-3 mt-3 form-register-1">
+        <form method="post" action="{% url 'register' %}" class="form-register">
           {% csrf_token %} {% for field in form %}
           <div class="form-group">
             {{ field.label_tag }}
@@ -24,9 +31,10 @@
           {% if field.errors %} {% for error in field.errors %}
           <p style="font-size: 13px">{{ error|escape }}</p>
           {% endfor %} {% endif %} {% endfor %}
-          <button type="submit" class="btn btn-primary mt-2">Register</button>
+          <button type="submit" class="btn btn-primary mt-2 register-button">Register</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+{% endblock content %}
