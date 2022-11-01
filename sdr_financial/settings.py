@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+SITE_ID = 2
+SOCIALACCOUNT_LOGOUT_ON_GET = True
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,10 +47,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google'
+    'allauth.socialaccount.providers.google',
+    'django.contrib.sites',
     'accounts', 
     'banking'
 ]
+
+
+# SOCIALACCOUNT_LOGOUT_ON_GET = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -109,6 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
+
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/login/'
@@ -136,6 +144,15 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
-    'djagngo.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email',],
+        'AUTH_PARAMS': {
+            'access_type': 'online'
+        }
+    }
+}
