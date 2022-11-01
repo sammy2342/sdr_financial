@@ -24,5 +24,14 @@ def dashboard(request):
     }
     return render(request, 'dashboard.html', context)
 
+
+
+
+@login_required
+def add_transaction(request):
+    print(request.POST)
+    return redirect('dashboard')
+
+
 def rn():
     return random.randrange(1000, 9999)
