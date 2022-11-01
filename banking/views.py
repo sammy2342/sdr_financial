@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Account
+from .forms import TransactionForm
 import random
 
 
@@ -27,12 +28,19 @@ def dashboard(request):
             context["account"] = request.user.account_set.get(id=request.POST['account'])
     if 'account' in context:
         context['transactions']=context['account'].transaction_set.all()
+    # breakpoint()
     return render(request, 'dashboard.html', context)
 
 
 @login_required
 def add_transaction(request):
+    form = TransactionForm(request.POST)
     print(request.POST)
+    if form.is_valid():
+        transaction = form.save()
+        account = request.user.account_set.get(id=request.POST['account'])
+        transaction.account = account
+        print(transaction)
     return redirect('dashboard')
 
 
