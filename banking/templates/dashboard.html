@@ -75,7 +75,16 @@
         </div>
     </form>
 </div>
+
 {% for transaction in transactions %}
+    {% comment %}
+    <tr>
+        <td>
+            Ill be adding the table later on
+            
+        </td>
+    </tr>
+    {% endcomment %}
 <p>{{transaction.amount}}</p>
 <p>{{transaction.created_at}}</p>
 
