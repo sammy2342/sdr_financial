@@ -2,7 +2,7 @@ from email.policy import default
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from datetime import date
+from django.utils.timezone import now
 
 # Create your models here.
 ACCOUNT_TYPES = (
@@ -25,7 +25,8 @@ class Account(models.Model):
         default=ACCOUNT_TYPES[0][0]
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return f'{self.number} ({self.user.username})'
 
@@ -33,7 +34,7 @@ class Account(models.Model):
 class Transaction(models.Model):
     date = models.DateField('Transaction Date')
     amount = models.IntegerField()
-    remaining_balance = models.IntegerField()
+    remaining_balance = models.IntegerField(null=True)
     description = models.TextField(max_length=12)
     type = models.CharField(
         max_length=1,
@@ -45,9 +46,11 @@ class Transaction(models.Model):
         Account,
         on_delete=models.CASCADE
     )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'{self.description  } on {self.date}'
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['-created_at']

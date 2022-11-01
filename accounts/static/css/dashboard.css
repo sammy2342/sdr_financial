@@ -1,0 +1,150 @@
+.dashboard-title { 
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-conatiner {
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 40px;
+    background-color: rgb(10, 9, 23);
+}
+
+.balance-section {
+    position: relative;
+    /* border: 1px solid red; */
+    padding: 7px;
+    width: 100%;
+    bottom: 40px;
+    right: 42px;
+    padding-bottom: 15px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.account-view { 
+    border: 3px solid yellow;
+    padding: 71px;
+    background-color: rgb(235, 148, 148);
+}
+
+small {
+    color: aliceblue;
+    margin-left: 5px;
+}
+
+.account-min {
+    padding: 5px;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background: none;
+    color: aliceblue;
+    outline: none;
+    margin-top: 20px;
+
+}
+
+
+select {
+    color: aliceblue;
+    width: 50%;
+    border: 1px solid whitesmoke;
+    outline: none;
+    border-radius: 2px;
+    background: none;
+}
+
+.account-section {
+    position: relative;
+    right: 32px;
+    padding: 10px;
+    width: 70%;
+    height: 50px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+
+.button-account {
+    background: rgba(192, 192, 192, 0.9);
+    width: 220px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+}
+
+.button-account:hover { 
+    background-color: rgb(209, 208, 208);
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.table-account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 65px;
+}
+tr {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+table > thead {
+    background-color: rgb(18, 18, 18);
+    width: 74%;
+    color: aliceblue;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+th {
+    font-size: 20px;
+    width: 240px;
+}
+
+table tbody tr td {
+    font-size: 16px;
+    letter-spacing: 0.25px;
+    font-weight: normal;
+    padding: 8px;
+    color: white;
+    /* border: 1px solid white; */
+    vertical-align: middle;
+    text-align: center;
+    width: 240px;
+}
+
+.table-section {
+    background-color: rgb(78, 78, 78);
+    width: 74%;
+    color: aliceblue;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.display-account {
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+}
