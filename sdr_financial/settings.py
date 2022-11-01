@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
-LOGOUT_REDIRECT_URL = '/home/'
+LOGOUT_REDIRECT_URL = ''
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -138,7 +138,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-SITE_ID = 1
+SITE_ID = 2
 SOCIALACCOUNT_PROVIDERS = {
 
     'google': {
