@@ -1,45 +1,48 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
-<h1>Dashboard</h1>
+<h1 class="dashboard-title">Dashboard</h1>
 {% comment %} Create Bank Account Form{% endcomment %}
 {% comment %} This should be far left {% endcomment %}
-<div>
-    <form action={% url 'new_bank_account' %} method="post">
-        {% csrf_token %}
-        <div>
-            <input type="number" name="balance" id="">
-            <p><small>Minimum $500 required to open accunt</small></p>
-        </div>
-        <div>
-            <select required name='type'>
-                <option disabled selected value>Choose account type</option>
-                <option value='C'>Checkings</option>
-                <option value='S'>Savings</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit">Create Account</button>
-        </div>
-    </form>
-</div>
-{% comment %} Chose Which account to be displayed in table {% endcomment %}
-{% comment %} This should be in the center {% endcomment %}
-<div>
-    <form method="POST">
-        <div>
-            <select name="showing" id="">
-                <option disabled selected value>Choose account to view</option>
-                {% for account in accounts %}
-                <option value="{{account.id}}">{{account.get_type_display}} - {{account.number|slice:"-5:"}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <button type="submit">View</button>
-    </form>
+<div class="card-container">
+    <div class="form-section">
+        <form action={% url 'new_bank_account' %} method="post" class="form-conatiner">
+            {% csrf_token %}
+            <div class="balance-section">
+                <p><small>Minimum $500 required to open account</small></p>
+                <input type="number" name="balance" id="" class="account-min">
+            </div>
+            <div class="account-div">
+                <select required name='type' class="account-section">
+                    <option disabled selected value>Choose account type</option>
+                    <option value='C'>Checkings</option>
+                    <option value='S'>Savings</option>
+                </select>
+            </div>
+            <div class="create-account-section">
+                <button type="submit" class="button-account">Create Account</button>
+            </div>
+        </form>
+    </div>
+    {% comment %} Chose Which account to be displayed in table {% endcomment %}
+    {% comment %} This should be in the center {% endcomment %}
+    <div class="account-view">
+        <form method="POST">
+            <div>
+                <select name="showing" id="">
+                    <option disabled selected value>Choose account to view</option>
+                    {% for account in accounts %}
+                    <option value="{{account.id}}">{{account.get_type_display}} - {{account.number|slice:"-5:"}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">View</button>
+        </form>
+    </div>
 </div>
 {% comment %} This Should be all the way to the right. Object will be called display_account {% endcomment %}
 <div>
-    DISPLAY ACCOUNT DETAILS
+
 </div>
+DISPLAY ACCOUNT DETAILS
 {% endblock content %}

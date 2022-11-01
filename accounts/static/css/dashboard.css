@@ -1,0 +1,91 @@
+.dashboard-title { 
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-conatiner {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 40px;
+    background-color: rgb(10, 9, 23);
+}
+
+.balance-section {
+    position: relative;
+    /* border: 1px solid red; */
+    padding: 7px;
+    width: 100%;
+    bottom: 40px;
+    right: 42px;
+    padding-bottom: 15px;
+}
+
+.account-div {
+    /* border: 1px solid red; */
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.account-view { 
+    border: 3px solid yellow;
+    padding: 71px;
+    background-color: rgb(235, 148, 148);
+}
+
+small {
+    color: aliceblue;
+    margin-left: 5px;
+}
+
+.account-min {
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    background: none;
+    border-radius: 12px;
+    color: aliceblue;
+    outline: none;
+    margin-top: 20px;
+}
+
+
+select {
+    color: aliceblue;
+    width: 50%;
+    border: 1px solid whitesmoke;
+    outline: none;
+    border-radius: 2px;
+    background: none;
+}
+
+.account-section {
+    position: relative;
+    right: 30px;
+    padding: 10px;
+    width: 70%;
+    height: 50px;
+    bottom: 30px;
+}
+
+.button-account {
+    background: rgba(192, 192, 192, 0.9);
+    width: 220px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+}
+
+.button-account:hover { 
+    background-color: rgb(209, 208, 208);
+    font-weight: bolder;
+    cursor: pointer;
+}
