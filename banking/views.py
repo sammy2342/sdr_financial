@@ -22,12 +22,13 @@ def dashboard(request):
     context = {
         'accounts': request.user.account_set.all()
     }
-    if request.user.account_set.first().number:
+    if request.user.account_set.first():
         context["account"] = request.user.account_set.first()
         if request.method == "POST":
-            context["account"] = request.user.account_set.get(id=request.POST['account'])
+            context["account"] = request.user.account_set.get(
+                id=request.POST['account'])
     if 'account' in context:
-        context['transactions']=context['account'].transaction_set.all()
+        context['transactions'] = context['account'].transaction_set.all()
     # breakpoint()
     return render(request, 'dashboard.html', context)
 
