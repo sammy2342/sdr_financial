@@ -42,7 +42,27 @@
 <div>
     <form action={% url 'add_transaction' %} method="POST">
         {% csrf_token %}
-        <input type="submit" value="">
+        <input type="hidden" name="account_id">
+        <div>
+            <label for="description">Description</label>
+            <input type="text" name="description" id="" >
+        </div>
+        <div>
+            <label required for="amount">Amount</label>
+            <input type="number" name="amount" id="">
+        </div>
+        <div>
+            <select required name='type'>
+                <option disabled selected value>Chose a type</option>
+                <option value='W'>Withdraw</option>
+                <option value='D'>Deposit</option>
+                <option value='P'>Purchase</option>
+            </select>
+        </div>
+        <div>
+            <p><small>This will add a transaction to </small></p>
+            <input type="submit" value="Add transaction">
+        </div>
     </form>
 </div>
 <div>
