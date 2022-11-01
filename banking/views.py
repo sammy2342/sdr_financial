@@ -4,7 +4,6 @@ from .models import Account
 import random
 
 
-
 # Create your views here.
 
 
@@ -22,9 +21,13 @@ def dashboard(request):
     context = {
         'accounts': request.user.account_set.all()
     }
+    if request.user.account_set.first().number:
+        context["account"] = request.user.account_set.first()
+        if request.method == "POST":
+            context["account"] = request.user.account_set.get(id=request.POST['account'])
+    if 'account' in context:
+        context['transactions']=context['account'].transaction_set.all()
     return render(request, 'dashboard.html', context)
-
-
 
 
 @login_required
