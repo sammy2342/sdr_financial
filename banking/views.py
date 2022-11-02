@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Account
 from .forms import TransactionForm
 import random
@@ -22,12 +23,13 @@ def dashboard(request):
     context = {
         'accounts': request.user.account_set.all()
     }
-    if request.user.account_set.first().number:
+    if request.user.account_set.first():
         context["account"] = request.user.account_set.first()
         if request.method == "POST":
-            context["account"] = request.user.account_set.get(id=request.POST['account'])
+            context["account"] = request.user.account_set.get(
+                id=request.POST['account'])
     if 'account' in context:
-        context['transactions']=context['account'].transaction_set.all()
+        context['transactions'] = context['account'].transaction_set.all()
     # breakpoint()
     return render(request, 'dashboard.html', context)
 
@@ -35,12 +37,22 @@ def dashboard(request):
 @login_required
 def add_transaction(request):
     form = TransactionForm(request.POST)
-    print(request.POST)
     if form.is_valid():
         transaction = form.save()
         account = request.user.account_set.get(id=request.POST['account'])
         transaction.account = account
-        print(transaction)
+        if transaction.type == 'W' or transaction.type == 'P':
+            if transaction.amount > account.balance:
+                transaction.delete()
+                messages.add_message(request, messages.INFO, 'Amount entered is greater than balance')
+                return redirect('dashboard')
+            transaction.remaining_balance = account.balance - transaction.amount
+        else:
+            transaction.remaining_balance = account.balance + transaction.amount
+        account.balance = transaction.remaining_balance
+        transaction.save()
+        account.save()
+        print([transaction.amount, account.balance])
     return redirect('dashboard')
 
 
