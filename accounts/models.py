@@ -1,15 +1,21 @@
 from django.db import models
-
-from django.contrib.auth.models import User
-from .models import Profile
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class UpdateUser(models.ModelForm):
-    username = models.CharField(max_length=100, required=False, widget=models.TextInput(attrs={'class': 'form-control'}))
-    email = models.EmailField(required=True, widget=models.TextInput(attrs={'class': 'form-contorl'}))
+class CreateUser(AbstractUser):
 
-    class Meta:
-        model = User
-        fields = ['name', 'email']
+    ACCOUNT = (
+        ('basic', 'basic'),
+        ('premium', 'premium'),
+        ('diamond', 'diamond')
+    )
+
+
+    email = models.EmailField(unique=True)
+    username = models.CharField(max_length=100)
+    status = models.CharField(max_length=100, choices=ACCOUNT, default='basic')
+
+def __str__(self):
+    return self.username
 
