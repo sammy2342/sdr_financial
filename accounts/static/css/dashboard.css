@@ -126,8 +126,6 @@ th {
 }
 
 .create-account:hover {
-    margin-right: 20px;
-    margin-bottom: 60px;
     background-image: linear-gradient(to bottom, #45A29E, #00dbeb);
     color: #ffffff;
     border-radius: 20px;
