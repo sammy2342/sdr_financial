@@ -64,7 +64,12 @@ def delete_transaction(request,account_id,pk):
     if acc:
         transaction = acc.transaction_set.get(id=pk)
         if transaction:
+            if transaction.type == 'W' or transaction.type == 'P':
+                acc.balance= acc.balance + transaction.amount
+            else:
+                acc.balance= acc.balance - transaction.amount
             transaction.delete()
+            acc.save(   )
             messages.add_message(request, messages.INFO, 'Transaction successfully deleted')
             return redirect('dashboard')
 
