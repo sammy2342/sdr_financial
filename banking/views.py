@@ -36,12 +36,18 @@ def dashboard(request):
 @login_required
 def add_transaction(request):
     form = TransactionForm(request.POST)
-    print(request.POST)
     if form.is_valid():
         transaction = form.save()
         account = request.user.account_set.get(id=request.POST['account'])
         transaction.account = account
-        print(transaction)
+        if transaction.type == 'W' or transaction.type == 'P':
+            transaction.remaining_balance = account.balance - transaction.amount
+        else:
+            transaction.remaining_balance = account.balance + transaction.amount
+        account.balance = transaction.remaining_balance
+        transaction.save()
+        account.save()
+        print([transaction.amount, account.balance])
     return redirect('dashboard')
 
 
