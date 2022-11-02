@@ -29,21 +29,16 @@
           {% endfor %} {% endif %}
           <button type="submit" class="btn btn-primary login-button">Login</button>
         </form>
-        <hr>
+        <div class="line-conatiner">
+          <div class="line"></div><a style="color: rgb(162, 162, 162);" class="line-content"> Or countinue with </a><div class="line"></div>
+          </div>
         <button class="btn btn-outline-info">
-          <a href="{% provider_login_url 'google'%}?next=/">
+          <a href="{% provider_login_url 'google'%}?next=/" class="login-img">
             <i class="fab fa-google"></i>
-            Login with Google
+            Login with Google<img src="https://i.imgur.com/FHjYyi0.png">
           </a>
         </button>
       </div>
-<<<<<<< HEAD
-      <hr>
-      <div class="line-conatiner">
-      <div class="line"></div><a style="color: black;">Login With Google</a><div class="line"></div>
-      </div>
-=======
->>>>>>> main
     </div>
   </div>
   <div class="picture">
