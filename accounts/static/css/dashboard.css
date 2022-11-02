@@ -116,7 +116,7 @@ th {
     outline: none;
     padding: 10px;
     margin-left: 50px;
-    width: 320px;
+    width: 220px;
     height: 40px;
     margin-top: 17px;
     background-color: #45A29E;
@@ -143,7 +143,7 @@ th {
     outline: none;
     padding: 10px;
     margin-left: 50px;
-    width: 320px;
+    width: 250px;
     height: 40px;
     margin-top: 17px;
     background-image: linear-gradient(to right, #45A29E, #030b0c);
@@ -159,6 +159,41 @@ th {
     margin-top: 2px;
 }
 
+.chose-type {
+    color: #c5c6c7;
+    border: 1px solid #66fcf1;
+    background: none;
+    outline: none;
+    padding: 10px;
+    margin-left: 50px;
+    width: 220px;
+    height: 40px;
+    margin-top: 17px;
+    background-color: #45A29E;
+    transition: ease-in 1s;
+    color: #0b0c10;
+    margin-bottom: 30px;
+}
 
+.add-transaction {
+    color: #c5c6c7;
+    border: 1px solid #66fcf1;
+    background: none;
+    outline: none;
+    padding: 10px;
+    margin-left: 50px;
+    width: 220px;
+    height: 40px;
+    margin-top: 17px;
+    background-color: #45A29E;
+    transition: ease-in 2s;
+    color: #0b0c10;
+    margin-bottom: 30px;
+}
 
-
+.add-transaction:hover {
+    background-image: linear-gradient(to bottom, #45A29E, #00dbeb);
+    color: #ffffff;
+    border-radius: 20px;
+    cursor: pointer;
+}
