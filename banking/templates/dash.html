@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
-<div class="bg-slate-200 grid grid-cols-3 gap-x-4">
+<div class="bg-slate-200 grid grid-cols-3 gap-x-4 place-content-stretch ">
     <form action={% url 'new_bank_account' %} method="post">
         <div class="md:flex flex-col space-y-4 ml-2">
             <h3 class ="text-[23px] text-gray-500">Open a New account</h3>
@@ -17,8 +18,8 @@
                     <option value='S'>Savings</option>
                 </select>
             </div>
-            <div>
-                <button type="submit" class="create-account bg-blue-400 p-2 text-gray-200  my-2 rounded-full">Create Account</button>
+            <div class="">
+                <button type="submit" class="create-account bg-blue-400 p-2 text-gray-200  my-2  rounded-full">Create Account</button>
             </div>
         </div>
     </form>
@@ -38,6 +39,14 @@
             </div>
         </div>
     </form>
+    <div class="flex items-start ">
+        <div class="outline w-[90%]  bg-gray-100 mt-4 px-4 flex flex-col space-y-6 rounded-xl outline-gray-400 outline-1 py-1">
+            <h1 class="text-[22px] font-black text-gray-500">Account Details</h1>
+            <h3 class="text-[19px]">Balance: <span class="text-green-600">  ${{account.balance|intcomma }}</span></h3>
+            <h3>Number: {{account.number}}</h3>
+            <h3>Opened On: {{account.created_at}}</h3>
+        </div>
+    </div>
     {% endif %}
 </div>
 <div>
