@@ -33,7 +33,7 @@ def dashboard(request):
     if 'account' in context:
         context['transactions'] = context['account'].transaction_set.all()
     # breakpoint()
-    return render(request, 'dash.html', context)
+    return render(request, 'dashboard.html', context)
 
 
 @login_required

@@ -5,3 +5,31 @@
         {% endfor %}
 </ul>
 {% endif %}
+
+<div class="notifcation not-active">
+    <span class="msg">Message: item has been deleted</span>
+    <span>
+        <span class='times'>X</span>
+    </span>
+</div>
+<button class="show-notfi">
+    <h1>show</h1>
+</button>
+
+<script>
+let buttonEl = document.querySelector('.show-notfi')
+let notfiEl = document.querySelector('.not-active')
+let timesEl = document.querySelector('.times')
+
+
+buttonEl.addEventListener('click', () => {
+    notfiEl.classList.remove('not-active')
+    notfiEl.classList.add('show')
+})
+
+timesEl.addEventListener('click', () => {
+    console.log('this workd')
+    notfiEl.classList.remove('show')
+    notfiEl.classList.add('not-active')
+})
+</script>

@@ -197,3 +197,58 @@ th {
     border-radius: 20px;
     cursor: pointer;
 }
+
+
+.notifcation {
+    background-color: #ff9b9b;
+    padding: 20px 40px;
+    min-width: 350px;
+    position: absolute;
+    right: 0px;
+    top: 80px;
+    border-left: 5px solid red;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.times {
+    position: absolute;
+    top: 0px;
+    left: 290px;
+    color: red;
+    background-color: rgb(173, 1, 1);
+    padding: 21px;
+    cursor: pointer;
+}
+
+.msg {
+    color: rgb(206, 54, 54);
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-right: 30px;
+}
+
+.notifcation.show {
+    animation: slide 1s ease forwards;
+}
+
+@keyframes slide {
+    0% {
+        transform: translate(100%);
+    }
+    40% {
+        transform: translate(-0%);
+    }
+    80% {
+        transform: translate(0%);
+    }
+    80% {
+        transform: translate(-20%);
+    }
+}
+
+.notifcation.not-active {
+    display: none;
+}
