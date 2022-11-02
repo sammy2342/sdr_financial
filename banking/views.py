@@ -36,7 +36,6 @@ def dashboard(request):
 @login_required
 def add_transaction(request):
     form = TransactionForm(request.POST)
-    print(request.POST)
     if form.is_valid():
         transaction = form.save()
         account = request.user.account_set.get(id=request.POST['account'])
