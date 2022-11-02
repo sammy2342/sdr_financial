@@ -216,10 +216,10 @@ th {
 .times {
     position: absolute;
     top: 0px;
-    left: 280px;
+    left: 290px;
     color: red;
     background-color: rgb(173, 1, 1);
-    padding: 30px;
+    padding: 21px;
     cursor: pointer;
 }
 
