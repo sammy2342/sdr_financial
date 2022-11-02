@@ -41,6 +41,9 @@ def add_transaction(request):
         account = request.user.account_set.get(id=request.POST['account'])
         transaction.account = account
         if transaction.type == 'W' or transaction.type == 'P':
+            if transaction.amount > account.balance:
+                transaction.delet()
+                return redirect('dashboard')
             transaction.remaining_balance = account.balance - transaction.amount
         else:
             transaction.remaining_balance = account.balance + transaction.amount
