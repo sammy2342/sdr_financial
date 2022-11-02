@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href={% static 'css/style.css' %}>
+</head>
 {% load humanize %}
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
@@ -8,19 +12,19 @@
             <h3 class="text-[23px] text-gray-500">Open a New account</h3>
             {% csrf_token %}
             <div class="amount-text">
-                <input type="number" name="balance" id="input-amount" placeholder="How much are you depositing:"
+                <input type="number" name="balance" placeholder="How much are you depositing:"
                     class="validate rounded-full p-2 outline outline-blue-300 outline-1 w-[60%]">
                 <p class="amount-text px-2 text-gray-600"><small>Minimum $500 required to open account</small></p>
             </div>
             <div>
-                <select required name='type' class="account-type w-[60%] rounded-full p-2 outline outline-blue-300 outline-1">
+                <select required name='type' class=" w-[60%] rounded-full p-2 outline outline-blue-300 outline-1">
                     <option disabled selected value>Choose account type</option>
                     <option value='C'>Checkings</option>
                     <option value='S'>Savings</option>
                 </select>
             </div>
             <div class="">
-                <button type="submit" class="create-account bg-blue-400 p-2 text-gray-200  my-2 w-[60%] rounded-full">Create
+                <button type="submit" class=" bg-blue-400 p-2 text-gray-200  my-2 w-[60%] rounded-full">Create
                     Account</button>
             </div>
         </div>
@@ -31,7 +35,7 @@
         {% csrf_token %}
         <div class="md:flex flex-col space-y-4 ml-2">
             <select name="account" id=""
-                class="account-type rounded-full p-2 outline w-[45%] outline-blue-300 outline-1">
+                class="rounded-full p-2 outline w-[45%] outline-blue-300 outline-1">
                 <option disabled selected value>Choose account to view</option>
                 {% for account in accounts %}
                 <option value="{{account.id}}">{{account.get_type_display}} - {{account.number|slice:"-5:"}}</option>
@@ -39,7 +43,7 @@
             </select>
             <div>
                 <button type="submit"
-                    class="create-view  bg-blue-400 p-2 text-gray-200 w-[45%] rounded-full">View</button>
+                    class="  bg-blue-400 p-2 text-gray-200 w-[45%] rounded-full">View</button>
             </div>
         </div>
     </form>
@@ -47,16 +51,16 @@
         <h3 class="text-[23px] text-gray-500">Add Transaction to{{account.get_type_display}} - {{account.number|slice:"-5:"}} </h3>
         {% csrf_token %}
         <input type="hidden" name="account" value={{account.id}}>
-        <div class="amount-text">
+        <div class="">
             <!-- <label for="description">Description</label> -->
-            <input type="text" name="description" id="input-amount" placeholder="Description" class="amount-input validate rounded-full p-2 outline outline-blue-300 outline-1 w-[60%]">
+            <input type="text" name="description"  placeholder="Description" class="rounded-full p-2 outline outline-blue-300 outline-1 w-[60%]">
         </div>
-        <div class="amount-text">
+        <div class="">
             <!-- <label required for="amount">Amount</label> -->
-            <input type="number" name="amount" id="input-amount" placeholder="Amount" class="amount-input amount-input validate rounded-full p-2 my-2 outline outline-blue-300 outline-1 w-[60%]">
+            <input type="number" name="amount"  placeholder="Amount" class=" rounded-full p-2 my-2 outline outline-blue-300 outline-1 w-[60%]">
         </div>
         <div>
-            <select required name='type' class="chose-type account-type w-[60%] rounded-full p-2 outline outline-blue-300 outline-1">
+            <select required name='type' class="    w-[60%] rounded-full p-2 outline outline-blue-300 outline-1">
                 <option disabled selected value>Chose a type</option>
                 <option value='W'>Withdraw</option>
                 <option value='D'>Deposit</option>
@@ -69,7 +73,7 @@
         </div>
         <div>
             <button type="submit"
-                class="create-view  bg-blue-400 p-2 text-gray-200 w-[45%] my-2 rounded-full">Add</button>
+                class=" bg-blue-400 p-2 text-gray-200 w-[45%] my-2 rounded-full">Add</button>
                 <p><small>This will add a transaction to {{account.number|slice:"-5:"}} </small></p>
         </div>
         <div>
