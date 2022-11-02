@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Account
 from .forms import TransactionForm
 import random
@@ -41,6 +42,10 @@ def add_transaction(request):
         account = request.user.account_set.get(id=request.POST['account'])
         transaction.account = account
         if transaction.type == 'W' or transaction.type == 'P':
+            if transaction.amount > account.balance:
+                transaction.delete()
+                messages.add_message(request, messages.INFO, 'Amount entered is greater than balance')
+                return redirect('dashboard')
             transaction.remaining_balance = account.balance - transaction.amount
         else:
             transaction.remaining_balance = account.balance + transaction.amount
