@@ -24,14 +24,16 @@ def dashboard(request):
         'accounts': request.user.account_set.all()
     }
     if request.user.account_set.first():
-        context["account"] = request.user.account_set.first()
-        if request.method == "POST":
-            context["account"] = request.user.account_set.get(
-                id=request.POST['account'])
+        id = request.POST.get('account', request.user.account_set.first().id);
+
+        context["account"] = request.user.account_set.get(id=id)
+        # if request.method == "POST":
+        #     context["account"] = request.user.account_set.get(
+        #         id=request.POST['account'])
     if 'account' in context:
         context['transactions'] = context['account'].transaction_set.all()
     # breakpoint()
-    return render(request, 'dashboard.html', context)
+    return render(request, 'dash.html', context)
 
 
 @login_required
@@ -55,6 +57,16 @@ def add_transaction(request):
         print([transaction.amount, account.balance])
     return redirect('dashboard')
 
+
+@login_required
+def delete_transaction(request,account_id,pk):
+    acc=request.user.account_set.get(id=account_id)
+    if acc:
+        transaction = acc.transaction_set.get(id=pk)
+        if transaction:
+            transaction.delete()
+            messages.add_message(request, messages.INFO, 'Transaction successfully deleted')
+            return redirect('dashboard')
 
 def rn():
     return random.randrange(1000, 9999)
