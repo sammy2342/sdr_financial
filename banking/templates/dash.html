@@ -1,4 +1,53 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
+<div class="bg-slate-200 grid grid-cols-3 gap-x-4">
+    <form action={% url 'new_bank_account' %} method="post">
+        <div class="md:flex flex-col space-y-4 ml-2">
+            <h3 class ="text-[23px] text-gray-500">Open a New account</h3>
+            {% csrf_token %}
+            <div class="amount-text">
+                <input type="number" name="balance" id="input-amount" placeholder="How much are you depositing:" class="validate rounded-full p-2 outline outline-blue-300 outline-1">
+                <p class="amount-text px-2 text-gray-600"><small>Minimum $500 required to open account</small></p>
+            </div>
+            <div>
+                <select required name='type' class="account-type rounded-full p-2 outline outline-blue-300 outline-1">
+                    <option disabled selected value>Choose account type</option>
+                    <option value='C'>Checkings</option>
+                    <option value='S'>Savings</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="create-account bg-blue-400 p-2 text-gray-200  my-2 rounded-full">Create Account</button>
+            </div>
+        </div>
+    </form>
+    {% if accounts %}
+    <form method="POST">
+        <h3 class="text-[23px] text-gray-500">Which account to view</h3>
+        {% csrf_token %}
+        <div class="md:flex flex-col space-y-4 ml-2">
+            <select name="account" id="" class="account-type rounded-full p-2 outline w-[25%] outline-blue-300 outline-1">
+                <option disabled selected value>Choose account to view</option>
+                {% for account in accounts %}
+                <option value="{{account.id}}">{{account.get_type_display}} - {{account.number|slice:"-5:"}}</option>
+                {% endfor %}
+            </select>
+            <div>
+                <button type="submit" class="create-view  bg-blue-400 p-2 text-gray-200 w-[25%] rounded-full">View</button>
+            </div>
+        </div>
+    </form>
+    {% endif %}
+</div>
+<div>
+    {% if  transactions %}
+    {% include "transactions.html" with transactions=transactions %}
+    {% else %}
+    <div >
+        <h2 class="text-center tex-[23px]">No Transactions as yet</h2>
+    </div>
+    {% endif %}
+</div>
+
 {% endblock content %}
