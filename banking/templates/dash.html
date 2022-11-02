@@ -1,8 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
-<head>
-    <link rel="stylesheet" href={% static 'css/style.css' %}>
-</head>
 {% load humanize %}
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
@@ -11,10 +7,10 @@
         <div class="md:flex flex-col space-y-4 ml-2 content-center">
             <h3 class="text-[23px] text-gray-500">Open a New account</h3>
             {% csrf_token %}
-            <div class="amount-text">
+            <div class="">
                 <input type="number" name="balance" placeholder="How much are you depositing:"
                     class="validate rounded-full p-2 outline outline-blue-300 outline-1 w-[60%]">
-                <p class="amount-text px-2 text-gray-600"><small>Minimum $500 required to open account</small></p>
+                <p ><small class="text-gray-600 text-[12px]">Minimum $500 required to open account</small></p>
             </div>
             <div>
                 <select required name='type' class=" w-[60%] rounded-full p-2 outline outline-blue-300 outline-1">
@@ -56,8 +52,8 @@
             <input type="text" name="description"  placeholder="Description" class="rounded-full p-2 outline outline-blue-300 outline-1 w-[60%]">
         </div>
         <div class="">
-            <!-- <label required for="amount">Amount</label> -->
-            <input type="number" name="amount"  placeholder="Amount" class=" rounded-full p-2 my-2 outline outline-blue-300 outline-1 w-[60%]">
+            <!-- <label required for=""></label> -->
+            <input type="number" name=""  placeholder="" class=" rounded-full p-2 my-2 outline outline-blue-300 outline-1 w-[60%]">
         </div>
         <div>
             <select required name='type' class="    w-[60%] rounded-full p-2 outline outline-blue-300 outline-1">
@@ -74,7 +70,7 @@
         <div>
             <button type="submit"
                 class=" bg-blue-400 p-2 text-gray-200 w-[45%] my-2 rounded-full">Add</button>
-                <p><small>This will add a transaction to {{account.number|slice:"-5:"}} </small></p>
+                <p><small class="">This will add a transaction to {{account.number|slice:"-5:"}} </small></p>
         </div>
         <div>
         </div>
@@ -86,9 +82,7 @@
             <h3 class="text-[19px]">Balance: <span class="text-green-600"> ${{account.balance|intcomma }}</span></h3>
             <h3>Number: {{account.number}}</h3>
             <h3>Type: {{account.get_type_display}}</h3>
-
             <h3>Opened On: {{account.created_at}}</h3>
-
         </div>
     </div>
     {% endif %}
