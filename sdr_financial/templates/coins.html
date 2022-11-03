@@ -2,11 +2,12 @@
 {% load socialaccount %}
 {% block content %}
 
+<div class="bg-gray-600">
 
     {% for coin in data %}
     <span class="coin-container">
         <div class="coin-row">
-            <div><img  class="coin-img " src="{{ coin.image }}" alt=""></div>
+            <div><img class="coin-img " src="{{ coin.image }}" alt=""></div>
             <div class="coin">{{ coin.name }}</div>
             <div class="coin">${{ coin.current_price }}</div>
             <div class="coin"> {{ coin.market_cap_change_24h }}</div>
@@ -15,5 +16,6 @@
         </div>
     </span>
     {% endfor %}
+</div>
 
 {% endblock content %}

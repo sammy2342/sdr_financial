@@ -2,7 +2,7 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
 
-<body class="home">
+<body class=" ">
     <h1 class="home-title">RIDANSO BANK</h1>
     <h5 class="home-text">Ridanso Bank is a leading private sector bank in America <br> where user transactions can be
         safely checked.</h5>
@@ -11,8 +11,8 @@
             <a href={% url 'login' %} class="log-in-tag">LOG IN TO ACCOUNT</a>
         </button>
     </span>
-    {% include "reviews.html" %}
     <div>
+        {% include "reviews.html" %}
     </div>
 </body>
 {% endblock content %}
