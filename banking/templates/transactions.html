@@ -1,4 +1,4 @@
-<div class="md:w-[80%] mt-12 outline outline-2 outline-gray-300 mx-auto overflow-x-auto relative shadow-md sm:rounded-lg">
+<div class="md:w-[80%] mt-12 outline outline-2 outline-gray-300 mx-auto overflow-x-auto  bg-gray-600 relative shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -44,11 +44,11 @@
 </div>
 
 <script>
-    
+
     let buttonEl = document.querySelector('.show-notification')
-    
+
     // let timesEl = document.querySelector('.times')
-    
+
     document.addEventListener("DOMContentLoaded", function(){
         buttonEl.addEventListener('click', () => {
             let notifiEl = document.querySelector('.notification')
@@ -56,10 +56,10 @@
             notifiEl.classList.remove('not-active')
             notifiEl.classList.add('show')
         })
-    
+
     });
 
-    
+
     // timesEl.addEventListener('click', () => {
     //     console.log('this works')
     //     notifiEl.classList.remove('show')

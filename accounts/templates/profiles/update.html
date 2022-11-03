@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Update Profile{% endblock title %}
+{% block content %}
+<div>
+    Update
+    <form action={% url 'apply_update' %} method="post">
+        {% csrf_token %}
+        <div>
+            <input type="text" name="first_name" placeholder="First Name">
+            <input type="text" name="last_name" placeholder="Last _name">
+        </div>
+        <div>
+            <textarea name="address" id="" cols="13" rows="2" placeholder="address"></textarea>
+            <textarea name="bio" id="" cols="13" rows="2" placeholder="bio"></textarea>
+        </div>
+        <input type="submit" value="Update Profile">
+    </form>
+</div>
+<div>
+    {{user.profile.first_name}} - {{user.profile.last_name}} - {{user.profile.address }} - {{user.profile.bio}}
+</div>
+{% endblock content %}

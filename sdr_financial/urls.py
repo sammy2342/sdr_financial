@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('logout_user', views.logout_user, name='logout'),
     path('', views.home, name='home'),
-    path('', include('banking.urls'))
+    path('', include('banking.urls')),
+    path('coins/', views.coins, name='coins')
 
 ]
