@@ -3,7 +3,7 @@
 }
 
 .coins-body {
-    background: rgb(26, 28, 28);
+    /* background: rgb(26, 28, 28); */
 }
 
 .coin-title {
@@ -38,7 +38,7 @@
     position: relative;
     bottom: 6px;
     left: 1px;
-} 
+}
 
 .coin {
     height: 30px;
