@@ -163,15 +163,17 @@ h5 {
     color: #545050;
     position: relative;
     bottom: 5px;
-
+    position: relative;
+    top: 15px;
+    right: 10px;
 }
 
 img {
     height: 30px;
     width: 30px;
     position: relative;
-    top: 9px;
-    left: 4px;
+    bottom: 30px;
+    left: 200px;
 }
 
 
@@ -207,7 +209,7 @@ img {
         border-radius: 4px;
         padding: 50px;
         padding-left: auto;
-        width: 80%;
+        width: 100%;
     }
 
     .form-group { 
