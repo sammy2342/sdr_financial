@@ -4,7 +4,7 @@ from django.contrib.auth import logout
 
 def home(request):
     if request.user.is_authenticated:
-        return redirect('dashboard')
+        return redirect('dashboard/0')
     return render(request, "home.html", {})
 
 def logout_user(request):

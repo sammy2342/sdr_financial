@@ -12,18 +12,20 @@ def create_new_account(request):
                 type=request.POST['type'], user=request.user)
     a.number = f"{rn()}-{rn()}-{rn()}-{rn()}"
     a.save()
-    return redirect('dashboard')
+    return redirect(f"dashboard/{a.id}")
 
 
 @login_required
-def dashboard(request):
+def dashboard(request, pk):
     context = {
         'accounts': request.user.account_set.all()
     }
     if request.user.account_set.first():
-        id = request.POST.get('account', request.user.account_set.first().id);
-
-        context["account"] = request.user.account_set.get(id=id)
+        try:
+            account = request.user.account_set.get(id=pk)
+        except:
+            account= request.user.account_set.first()
+        context["account"] = account
     if 'account' in context:
         context['transactions'] = context['account'].transaction_set.all()
     # breakpoint()
@@ -39,9 +41,10 @@ def add_transaction(request):
         transaction.account = account
         if transaction.type == 'W' or transaction.type == 'P':
             if transaction.amount > account.balance:
-                messages.add_message(request, messages.INFO, 'Amount entered is greater than balance')
-                transaction.delete( )
-                return redirect('dashboard')
+                messages.add_message(request, messages.INFO,
+                                     'Amount entered is greater than balance')
+                transaction.delete()
+                return redirect(f"dashboard/{account.id}")
             transaction.remaining_balance = account.balance - transaction.amount
         else:
             transaction.remaining_balance = account.balance + transaction.amount
@@ -50,23 +53,25 @@ def add_transaction(request):
         account.save()
         messages.add_message(request, messages.INFO, 'Transaction saved')
         print([transaction.amount, account.balance])
-    return redirect('dashboard')
+    return redirect(f"dashboard/{account.id}")
 
 
 @login_required
-def delete_transaction(request,account_id,pk):
-    acc=request.user.account_set.get(id=account_id)
-    if acc:
-        transaction = acc.transaction_set.get(id=pk)
+def delete_transaction(request, account_id, pk):
+    account = request.user.account_set.get(id=account_id)
+    if account:
+        transaction = account.transaction_set.get(id=pk)
         if transaction:
             if transaction.type == 'W' or transaction.type == 'P':
-                acc.balance= acc.balance + transaction.amount
+                account.balance = account.balance + transaction.amount
             else:
-                acc.balance= acc.balance - transaction.amount
+                account.balance = account.balance - transaction.amount
             transaction.delete()
-            acc.save(   )
-            messages.add_message(request, messages.INFO, 'Transaction successfully deleted')
-            return redirect('dashboard')
+            account.save()
+            messages.add_message(request, messages.INFO,
+                                 'Transaction successfully deleted')
+    return redirect(f"/dashboard/{account.id}")
+
 
 def rn():
     return random.randrange(1000, 9999)
