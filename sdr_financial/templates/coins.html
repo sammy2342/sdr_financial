@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block title %}Login{% endblock %}
+{% load socialaccount %}
+{% block content %}
+
+
+    {% for coin in data %}
+    <span class="coin-container">
+        <div class="coin-row">
+            <div><img  class="coin-img " src="{{ coin.image }}" alt=""></div>
+            <div class="coin">{{ coin.name }}</div>
+            <div class="coin">${{ coin.current_price }}</div>
+            <div class="coin"> {{ coin.market_cap_change_24h }}</div>
+            <div class="coin">%{{ coin.market_cap }}</div>
+            <div class="coin">%{{ coin.total_volume }}</div>
+        </div>
+    </span>
+    {% endfor %}
+
+{% endblock content %}
