@@ -46,6 +46,7 @@ def add_transaction(request):
         if transaction.type == 'W' or transaction.type == 'P':
             if transaction.amount > account.balance:
                 messages.add_message(request, messages.INFO, 'Amount entered is greater than balance')
+                transaction.delete( )
                 return redirect('dashboard')
             transaction.remaining_balance = account.balance - transaction.amount
         else:
@@ -53,6 +54,7 @@ def add_transaction(request):
         account.balance = transaction.remaining_balance
         transaction.save()
         account.save()
+        messages.add_message(request, messages.INFO, 'Transaction saved')
         print([transaction.amount, account.balance])
     return redirect('dashboard')
 
