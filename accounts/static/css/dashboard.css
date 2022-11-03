@@ -199,7 +199,7 @@ th {
 }
 
 
-.notifcation {
+.notification {
     background-color: #ff9b9b;
     padding: 20px 40px;
     min-width: 350px;
@@ -230,7 +230,7 @@ th {
     margin-right: 30px;
 }
 
-.notifcation.show {
+.notification.show {
     animation: slide 1s ease forwards;
 }
 
@@ -249,6 +249,6 @@ th {
     }
 }
 
-.notifcation.not-active {
+.notification.not-active {
     display: none;
 }
