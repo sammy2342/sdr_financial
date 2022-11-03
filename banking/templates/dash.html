@@ -2,7 +2,10 @@
 {% load humanize %}
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
-<div class="bg-slate-200 grid grid-cols-4 gap-x-4 place-content-center ">
+<div>
+    {% include "ticker.html" %}
+</div>
+<div class="bg-slate-200    grid grid-cols-4 gap-x-4 place-content-center ">
     <form action={% url 'new_bank_account' %} method="post">
         <div class="md:flex flex-col space-y-4 ml-2 content-center">
             <h3 class="text-[23px] text-gray-500">Open a New account</h3>
