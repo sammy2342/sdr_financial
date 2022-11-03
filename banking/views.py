@@ -6,9 +6,6 @@ from .forms import TransactionForm
 import random
 
 
-# Create your views here.
-
-
 @login_required
 def create_new_account(request):
     a = Account(balance=request.POST['balance'],
@@ -27,9 +24,6 @@ def dashboard(request):
         id = request.POST.get('account', request.user.account_set.first().id);
 
         context["account"] = request.user.account_set.get(id=id)
-        # if request.method == "POST":
-        #     context["account"] = request.user.account_set.get(
-        #         id=request.POST['account'])
     if 'account' in context:
         context['transactions'] = context['account'].transaction_set.all()
     # breakpoint()
