@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+from django.contrib.auth.views import PasswordChangeView
 
 # Views
 
@@ -18,5 +20,9 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+class MyPassword(PasswordChangeView):
+    template_name = 'registration/change-password.html'
+    success_url = '/login/'
 
 
