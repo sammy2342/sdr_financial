@@ -1,8 +1,27 @@
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-        {% endfor %}
-</ul>
-{% endif %}
-        
+{% for message in messages %}
+<div class="notifcation ">
+    <span class="msg">{{message}}</span>
+    <span>
+        <span class='times'>X</span>
+    </span>
+</div>
+{% endfor %}
+
+
+<script>
+let buttonEl = document.querySelector('.show-notfi')
+let notfiEl = document.querySelector('.not-active')
+let timesEl = document.querySelector('.times')
+
+
+buttonEl.addEventListener('click', () => {
+    notfiEl.classList.remove('not-active')
+    notfiEl.classList.add('show')
+})
+
+timesEl.addEventListener('click', () => {
+    console.log('this workd')
+    notfiEl.classList.remove('show')
+    notfiEl.classList.add('not-active')
+})
+</script>
