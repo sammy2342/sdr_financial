@@ -1,0 +1,33 @@
+{% for message in messages %}
+<div class="notification ">
+    <span class="msg">{{message}}</span>
+    <span>
+        <span class='times'>X</span>
+    </span>
+</div>
+{% endfor %}
+ 
+
+<script>
+    
+    // let buttonEl = document.querySelector('.show-notification')
+    // let notifiEl = document.querySelector('.notification')
+    let timesEl = document.querySelector('.times')
+    
+    // // window.onload=function(){
+    // //   -- put your code here
+    // // }
+    // buttonEl.addEventListener('click', () => {
+    //     console.log('this workds as wll')
+    //     notifiEl.classList.remove('not-active')
+    //     notifiEl.classList.add('show')
+    // })
+    document.addEventListener("DOMContentLoaded", function(){
+    timesEl.addEventListener('click', () => {
+        let notifiEle = document.querySelector('.notification')
+        console.log('this works :d')
+        notifiEle.classList.remove('show')
+        notifiEle.classList.add('not-active')
+    })
+})
+</script>
