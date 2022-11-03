@@ -12,7 +12,7 @@ def create_new_account(request):
                 type=request.POST['type'], user=request.user)
     a.number = f"{rn()}-{rn()}-{rn()}-{rn()}"
     a.save()
-    return redirect(f"dashboard/{a.id}")
+    return redirect(f"/dashboard/{a.id}")
 
 
 @login_required
@@ -44,7 +44,7 @@ def add_transaction(request):
                 messages.add_message(request, messages.INFO,
                                      'Amount entered is greater than balance')
                 transaction.delete()
-                return redirect(f"dashboard/{account.id}")
+                return redirect(f"/dashboard/{account.id}")
             transaction.remaining_balance = account.balance - transaction.amount
         else:
             transaction.remaining_balance = account.balance + transaction.amount
@@ -53,7 +53,7 @@ def add_transaction(request):
         account.save()
         messages.add_message(request, messages.INFO, 'Transaction saved')
         print([transaction.amount, account.balance])
-    return redirect(f"dashboard/{account.id}")
+    return redirect(f"/dashboard/{account.id}")
 
 
 @login_required
