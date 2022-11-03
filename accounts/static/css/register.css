@@ -14,7 +14,7 @@
     background: rgba(255, 255, 255, 0.5);
     margin-left: auto;
     margin-right: auto;
-    height: 540px;
+    height: 600px;
     margin-top: 100px;
     z-index: 1;
 }
@@ -25,7 +25,7 @@
     background: rgba(255, 255, 255, 0.15);
     z-index: -1;
     transform: rotate(-4deg);
-    height: 540px;
+    height: 620px;
     margin-top: 20px;
     width: 640px;
 }
@@ -82,4 +82,27 @@
 label {
     margin-left: 40px;
     color: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 960px) { 
+    .container-1 {
+        width: 90%;
+        margin-bottom: 100px;
+    }
+
+    .container-1::before {
+        width: 91%;
+    }
+
+    .container-1 input[type='text'],
+    .container-1 input[type='password'] {
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    outline: none;
+    transition: 0.5s;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 40px;
+}
 }
