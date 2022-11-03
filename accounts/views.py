@@ -5,12 +5,16 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.contrib import messages
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import views as auth_views
 
 
 # Views
 
 
 def register(request):
+    if request.user:
+        return redirect('home')
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -43,3 +47,4 @@ def apply_user_update(request):
                          'Your info has been saved')
 
     return redirect('update_user')
+
