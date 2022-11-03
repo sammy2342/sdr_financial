@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Decoreator to ensure user is logged in
 from django.contrib.auth.decorators import login_required
 from .models import Profile
@@ -26,9 +27,10 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
-class MyPassword(PasswordChangeView):
+
+class MyPassword(LoginRequiredMixin, PasswordChangeView):
     template_name = 'registration/change-password.html'
-    success_url = '/login/'
+    success_url = '/dashboard/'
 
 
 # Get form for user update
