@@ -13,9 +13,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/coins.css' %}" />
     <title>{% block title %}{% endblock title %}</title>
   </head>
-  <body>
+  <body class="coins-body">
     {% include 'nav.html' %}
     <div id="content">
       {% include "messages.html" %}
