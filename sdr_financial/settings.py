@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'accounts',
     'banking',
-    "django.contrib.humanize"
+    "django.contrib.humanize",
 
 ]
 
